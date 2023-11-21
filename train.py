@@ -41,3 +41,46 @@ history = model.fit(train_ds,
                     validation_data=val_ds)
 # 保存模型
 model.save("model.h5")
+
+
+import matplotlib.pyplot as plt
+
+# 绘制训练集的准确度和损失曲线
+plt.figure(figsize=(12, 4))
+
+# 绘制训练集准确度曲线
+plt.subplot(1, 2, 1)
+plt.plot(history.history['sparse_categorical_accuracy'])
+plt.title('Training Accuracy')
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+
+# 绘制训练集损失曲线
+plt.subplot(1, 2, 2)
+plt.plot(history.history['loss'])
+plt.title('Training Loss')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+
+plt.tight_layout()
+plt.show()
+
+# 绘制验证集的准确度和损失曲线
+plt.figure(figsize=(12, 4))
+
+# 绘制验证集准确度曲线
+plt.subplot(1, 2, 1)
+plt.plot(history.history['val_sparse_categorical_accuracy'])
+plt.title('Validation Accuracy')
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+
+# 绘制验证集损失曲线
+plt.subplot(1, 2, 2)
+plt.plot(history.history['val_loss'])
+plt.title('Validation Loss')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+
+plt.tight_layout()
+plt.show()
